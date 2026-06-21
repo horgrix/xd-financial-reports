@@ -27,7 +27,7 @@ def main(args: Optional[List[str]] = None) -> int:
         "--host", default="127.0.0.1", help="监听地址 (默认: 127.0.0.1)"
     )
     parser.add_argument(
-        "--port", type=int, default=8000, help="监听端口 (默认: 8000)"
+        "--port", type=int, default=8001, help="监听端口 (默认: 8001)"
     )
     parser.add_argument(
         "--reload", action="store_true", help="开发模式, 文件变更自动重载"
