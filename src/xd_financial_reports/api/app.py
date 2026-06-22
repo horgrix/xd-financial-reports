@@ -8,6 +8,7 @@ from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # 确保 src 目录在 sys.path 中
 _src_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -42,6 +43,15 @@ def create_app() -> FastAPI:
         description="心动公司 (XD Inc.) 2021-2025 财务数据分析接口",
         version="0.1.0",
         lifespan=lifespan,
+    )
+
+    # 配置CORS
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],  # 允许所有源，生产环境建议指定具体域名
+        allow_credentials=True,
+        allow_methods=["*"],  # 允许所有HTTP方法
+        allow_headers=["*"],  # 允许所有请求头
     )
 
     prefix = "/api/v2/financial/xd"
