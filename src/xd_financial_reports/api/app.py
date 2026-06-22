@@ -44,7 +44,7 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
-    prefix = "/api/v1/financial/xd"
+    prefix = "/api/v2/financial/xd"
 
     app.include_router(revenue_report_router, prefix=prefix)
     app.include_router(revenue_game_report_router, prefix=prefix)
@@ -53,7 +53,7 @@ def create_app() -> FastAPI:
     app.include_router(core_operational_report_router, prefix=prefix)
     app.include_router(expense_report_router, prefix=prefix)
 
-    @app.get("/api/v1/financial/health")
+    @app.get("/api/v2/financial/health")
     async def health():
         return {"status": "ok"}
 
