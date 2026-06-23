@@ -49,6 +49,13 @@ class XdCoreFinancialReportDAO(BaseDAO):
         )
         return self.rows_to_dicts(rows)
 
+    def get_distinct_years(self) -> list[int]:
+        """查询所有不重复的 report_year，按年份升序排列"""
+        sql = f"SELECT DISTINCT report_year FROM {self.table_name} ORDER BY report_year"
+        with self._get_conn() as conn:
+            rows = conn.execute(sql).fetchall()
+            return [row[0] for row in rows]
+
     def upsert(self, report_year: int, period: str, **kwargs) -> int:
         """根据 year+period 唯一键插入或更新记录"""
         kwargs["report_year"] = report_year
