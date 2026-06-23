@@ -15,7 +15,7 @@ class XdBalanceReportDAO(BaseDAO):
     pk_field = "id"
     columns = [
         "id", "report_year", "period",
-        "cash_and_cash_equivalents", "contract_liabilities",
+        "cash_and_cash_equivalents", "contract_liabilities", "total_liabilities",
         "created_at", "updated_at",
     ]
 
