@@ -3,7 +3,7 @@ from typing import Optional, List
 from fastapi import APIRouter, Query, HTTPException
 from xd_financial_reports.dao import get_dao_manager
 
-VALID_PERIODS = {"H1", "FY"}
+VALID_PERIODS = {"H1", "H2","FY"}
 
 router = APIRouter(tags=["balance-report"])
 

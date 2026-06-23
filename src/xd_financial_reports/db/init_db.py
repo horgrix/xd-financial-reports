@@ -12,7 +12,7 @@ from typing import Optional
 from .connection import get_pool, ConnectionPool
 
 # 数据库文件路径
-DEFAULT_DB_PATH = Path(__file__).parent.parent.parent.parent / "xd_financial.db"
+DEFAULT_DB_PATH = Path(__file__).parent.parent.parent.parent / "xd_financial_1.1.db"
 
 _init_lock = threading.Lock()
 _initialized = False
@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS xd_balance_report (
     period                      TEXT        NOT NULL,
     cash_and_cash_equivalents   INTEGER     NOT NULL,
     contract_liabilities        INTEGER     NOT NULL,
+    total_liabilities           BIGINT      NOT NULL,
     created_at                  TEXT        DEFAULT (datetime('now','localtime')),
     updated_at                  TEXT        DEFAULT (datetime('now','localtime')),
     UNIQUE (report_year, period)
@@ -233,18 +234,18 @@ VALUES
 -- xd_balance_report 数据
 -- ============================================================
 INSERT OR IGNORE INTO xd_balance_report
-    (report_year, period, cash_and_cash_equivalents, contract_liabilities)
+    (report_year, period, cash_and_cash_equivalents, contract_liabilities, total_liabilities)
 VALUES
-    (2021, 'H1', 2464289, 138387),
-    (2021, 'FY', 3164726, 206642),
-    (2022, 'H1', 2095935, 276215),
-    (2022, 'FY', 3098084, 156688),
-    (2023, 'H1', 3301473, 150788),
-    (2023, 'FY', 3206821, 180780),
-    (2024, 'H1', 2163500, 351056),
-    (2024, 'FY', 2781173, 321872),
-    (2025, 'H1', 2971628, 288506),
-    (2025, 'FY', 3689375, 248156);
+    (2021, 'H1',  2464289,  138387, 2492470),
+    (2021, 'FY',  3164726,  206642, 2661725),
+    (2022, 'H1',  2095935,  276215, 2905321),
+    (2022, 'FY',  3098084,  156688, 2890405),
+    (2023, 'H1',  3301473,  150788, 2793212),
+    (2023, 'FY',  3206821,  180780, 2540691),
+    (2024, 'H1',  2163500,  351056, 1449165),
+    (2024, 'FY',  2781173,  321872, 1208582),
+    (2025, 'H1',  2971628,  288506, 1304001),
+    (2025, 'FY',  3689375,  248156, 1173582);
 
 -- ============================================================
 -- xd_core_financial_report 数据
