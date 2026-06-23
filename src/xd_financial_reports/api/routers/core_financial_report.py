@@ -34,7 +34,7 @@ async def query_core_financial_report(
         where += f" AND period IN ({placeholders})"
         params.extend(period)
 
-    rows = dao.get_by_condition(where, tuple(params), order_by="report_year, period")
+    rows = dao.get_by_condition(where, tuple(params), order_by="report_year, period_index")
     return dao.rows_to_dicts(rows)
 
 

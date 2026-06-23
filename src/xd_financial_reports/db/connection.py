@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Optional
 
 # 默认数据库路径
-DEFAULT_DB_PATH = Path(__file__).parent.parent.parent.parent / "xd_financial_1.2.db"
+DEFAULT_DB_PATH = Path(__file__).parent.parent.parent.parent / "xd_financial.db"
 DEFAULT_POOL_SIZE = 5
 
 
